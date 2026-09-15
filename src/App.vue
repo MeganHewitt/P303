@@ -79,10 +79,10 @@ const filteredProducts = computed(() => {
 })
 
 const navItems = [
-  { id: 'tasks', label: 'Tasks', icon: '✓' },
-  { id: 'search', label: 'Search', icon: '⌕' },
-  { id: 'report', label: 'Report', icon: '!' },
-  { id: 'notes', label: 'Notes', icon: '✎' },
+  { id: 'tasks', label: 'Tasks' },
+  { id: 'search', label: 'Search' },
+  { id: 'report', label: 'Report' },
+  { id: 'notes', label: 'Notes' },
 ] as const
 
 function statusColor(status: string) {
@@ -379,7 +379,26 @@ onMounted(() => {
         :class="{ active: currentView === item.id }"
         @click="handleNav(item.id)"
       >
-        <span class="nav-icon">{{ item.icon }}</span>
+        <span class="nav-icon">
+          <svg v-if="item.id === 'tasks'" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 12.5 10 15.5 17 8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+          </svg>
+          <svg v-else-if="item.id === 'search'" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="5.5" fill="none" stroke="currentColor" stroke-width="2" />
+            <path d="M16 16 21 21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <svg v-else-if="item.id === 'report'" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 9v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            <circle cx="12" cy="16.5" r="1" fill="currentColor" />
+            <path d="M12 4.5a8 8 0 1 1-8 8 8 8 0 0 1 8-8Z" fill="none" stroke="currentColor" stroke-width="2" />
+          </svg>
+          <svg v-else viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 4.5h9l3 3V18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+            <path d="M15 4.5v3h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+            <path d="M8 11h8M8 15h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </span>
         <span>{{ item.label }}</span>
       </button>
     </nav>
@@ -843,8 +862,19 @@ textarea {
 }
 
 .nav-icon {
-  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: currentColor;
   line-height: 1;
+}
+
+.nav-icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
 }
 
 .toast {
