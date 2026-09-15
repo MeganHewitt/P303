@@ -105,11 +105,16 @@ function markTaskStatus(taskId: string, nextStatus: 'pending' | 'in-progress' | 
   target.status = nextStatus
 
   if (nextStatus === 'done') {
-    const task = tasks.value.find((item) => item.id === taskId)
-    if (task) {
-      const index = expandedTaskIds.value.indexOf(taskId)
-      if (index >= 0) expandedTaskIds.value.splice(index, 1)
-    }
+    const index = expandedTaskIds.value.indexOf(taskId)
+    if (index >= 0) expandedTaskIds.value.splice(index, 1)
+  }
+}
+
+function revertTask(taskId: string) {
+  markTaskStatus(taskId, 'pending')
+  const index = expandedTaskIds.value.indexOf(taskId)
+  if (index === -1) {
+    expandedTaskIds.value.push(taskId)
   }
 }
 
@@ -203,8 +208,18 @@ onMounted(() => {
               <div class="meta-line" v-if="task.notes">{{ task.notes }}</div>
               <div class="meta-line" v-if="task.relatedSku">Related SKU: {{ task.relatedSku }}</div>
               <div class="action-row">
-                <button class="action-btn" @click.stop="markTaskStatus(task.id, 'in-progress')">Mark In Progress</button>
-                <button class="action-btn primary" @click.stop="markTaskStatus(task.id, 'done')">Mark Done</button>
+                <template v-if="task.status === 'pending'">
+                  <button class="action-btn" @click.stop="markTaskStatus(task.id, 'in-progress')">Mark In Progress</button>
+                  <button class="action-btn primary" @click.stop="markTaskStatus(task.id, 'done')">Mark Done</button>
+                </template>
+                <template v-else-if="task.status === 'in-progress'">
+                  <button class="action-btn" @click.stop="revertTask(task.id)">Revert to Pending</button>
+                  <button class="action-btn primary" @click.stop="markTaskStatus(task.id, 'done')">Mark Done</button>
+                </template>
+                <template v-else>
+                  <button class="action-btn" @click.stop="revertTask(task.id)">Reopen</button>
+                  <button class="action-btn primary" @click.stop="markTaskStatus(task.id, 'in-progress')">Mark In Progress</button>
+                </template>
               </div>
             </div>
           </div>
@@ -242,8 +257,18 @@ onMounted(() => {
               <div class="meta-line" v-if="task.notes">{{ task.notes }}</div>
               <div class="meta-line" v-if="task.relatedSku">Related SKU: {{ task.relatedSku }}</div>
               <div class="action-row">
-                <button class="action-btn" @click.stop="markTaskStatus(task.id, 'in-progress')">Mark In Progress</button>
-                <button class="action-btn primary" @click.stop="markTaskStatus(task.id, 'done')">Mark Done</button>
+                <template v-if="task.status === 'pending'">
+                  <button class="action-btn" @click.stop="markTaskStatus(task.id, 'in-progress')">Mark In Progress</button>
+                  <button class="action-btn primary" @click.stop="markTaskStatus(task.id, 'done')">Mark Done</button>
+                </template>
+                <template v-else-if="task.status === 'in-progress'">
+                  <button class="action-btn" @click.stop="revertTask(task.id)">Revert to Pending</button>
+                  <button class="action-btn primary" @click.stop="markTaskStatus(task.id, 'done')">Mark Done</button>
+                </template>
+                <template v-else>
+                  <button class="action-btn" @click.stop="revertTask(task.id)">Reopen</button>
+                  <button class="action-btn primary" @click.stop="markTaskStatus(task.id, 'in-progress')">Mark In Progress</button>
+                </template>
               </div>
             </div>
           </div>
@@ -260,6 +285,9 @@ onMounted(() => {
                 <h3>{{ task.title }}</h3>
                 <p>{{ task.location }}</p>
               </div>
+            </div>
+            <div class="task-badges">
+              <button class="action-btn small" @click.stop="revertTask(task.id)">Reopen</button>
             </div>
           </div>
         </div>
@@ -620,6 +648,13 @@ textarea {
   border: 1px solid #cbd5e1;
   border-radius: 12px;
   cursor: pointer;
+}
+
+.action-btn.small {
+  flex: none;
+  padding: 8px 12px;
+  min-height: 36px;
+  font-size: 12px;
 }
 
 .action-btn.primary,
