@@ -1,0 +1,182 @@
+[
+  {
+    "id": "prod-001",
+    "name": "Ultra Soft Bath Tissue",
+    "sku": "SKU-04821",
+    "aisle": "Aisle 7",
+    "bay": "Bay 3",
+    "stockStatus": "Low",
+    "lastRestocked": "2025-10-14 6:32 AM"
+  },
+  {
+    "id": "prod-002",
+    "name": "Everyday Paper Towels",
+    "sku": "SKU-04822",
+    "aisle": "Aisle 7",
+    "bay": "Bay 4",
+    "stockStatus": "In Stock",
+    "lastRestocked": "2025-10-13 4:15 PM"
+  },
+  {
+    "id": "prod-003",
+    "name": "Premium Hand Soap",
+    "sku": "SKU-01281",
+    "aisle": "Aisle 2",
+    "bay": "Bay 1",
+    "stockStatus": "In Stock",
+    "lastRestocked": "2025-10-12 9:45 AM"
+  },
+  {
+    "id": "prod-004",
+    "name": "Classic Laundry Detergent",
+    "sku": "SKU-01391",
+    "aisle": "Aisle 2",
+    "bay": "Bay 6",
+    "stockStatus": "Out",
+    "lastRestocked": "2025-10-10 7:20 AM"
+  },
+  {
+    "id": "prod-005",
+    "name": "Organic Cotton Wipes",
+    "sku": "SKU-12022",
+    "aisle": "Aisle 8",
+    "bay": "Bay 2",
+    "stockStatus": "Low",
+    "lastRestocked": "2025-10-14 10:12 AM"
+  },
+  {
+    "id": "prod-006",
+    "name": "Glass Cleaner Refill",
+    "sku": "SKU-03344",
+    "aisle": "Aisle 1",
+    "bay": "Bay 5",
+    "stockStatus": "In Stock",
+    "lastRestocked": "2025-10-14 8:08 AM"
+  },
+  {
+    "id": "prod-007",
+    "name": "All-Purpose Cleaning Spray",
+    "sku": "SKU-03347",
+    "aisle": "Aisle 1",
+    "bay": "Bay 6",
+    "stockStatus": "Low",
+    "lastRestocked": "2025-10-11 12:35 PM"
+  },
+  {
+    "id": "prod-008",
+    "name": "Value Pack Trash Bags",
+    "sku": "SKU-06411",
+    "aisle": "Aisle 4",
+    "bay": "Bay 3",
+    "stockStatus": "In Stock",
+    "lastRestocked": "2025-10-14 2:48 PM"
+  },
+  {
+    "id": "prod-009",
+    "name": "Heavy Duty Foaming Cleaner",
+    "sku": "SKU-06429",
+    "aisle": "Aisle 4",
+    "bay": "Bay 8",
+    "stockStatus": "Out",
+    "lastRestocked": "2025-10-09 11:10 AM"
+  },
+  {
+    "id": "prod-010",
+    "name": "Auto Dish Gel",
+    "sku": "SKU-00591",
+    "aisle": "Aisle 6",
+    "bay": "Bay 2",
+    "stockStatus": "In Stock",
+    "lastRestocked": "2025-10-14 9:26 AM"
+  },
+  {
+    "id": "prod-011",
+    "name": "Large Capacity Laundry Pods",
+    "sku": "SKU-00592",
+    "aisle": "Aisle 6",
+    "bay": "Bay 4",
+    "stockStatus": "Low",
+    "lastRestocked": "2025-10-13 2:05 PM"
+  },
+  {
+    "id": "prod-012",
+    "name": "Breeze Air Freshener",
+    "sku": "SKU-09014",
+    "aisle": "Aisle 9",
+    "bay": "Bay 1",
+    "stockStatus": "In Stock",
+    "lastRestocked": "2025-10-14 7:14 AM"
+  },
+  {
+    "id": "prod-013",
+    "name": "Chic Cotton Towel Set",
+    "sku": "SKU-00234",
+    "aisle": "Aisle 3",
+    "bay": "Bay 1",
+    "stockStatus": "Low",
+    "lastRestocked": "2025-10-12 5:50 PM"
+  },
+  {
+    "id": "prod-014",
+    "name": "Classic Bath Mat",
+    "sku": "SKU-00288",
+    "aisle": "Aisle 3",
+    "bay": "Bay 7",
+    "stockStatus": "In Stock",
+    "lastRestocked": "2025-10-15 8:20 AM"
+  },
+  {
+    "id": "prod-015",
+    "name": "Grain-Free Dry Dog Food",
+    "sku": "SKU-19384",
+    "aisle": "Aisle 5",
+    "bay": "Bay 2",
+    "stockStatus": "Out",
+    "lastRestocked": "2025-10-08 1:42 PM"
+  },
+  {
+    "id": "prod-016",
+    "name": "Chicken & Rice Cat Food",
+    "sku": "SKU-19390",
+    "aisle": "Aisle 5",
+    "bay": "Bay 5",
+    "stockStatus": "Low",
+    "lastRestocked": "2025-10-13 10:30 AM"
+  },
+  {
+    "id": "prod-017",
+    "name": "Seasonal Accent Candle",
+    "sku": "SKU-30102",
+    "aisle": "End Cap 2",
+    "bay": "Center",
+    "stockStatus": "In Stock",
+    "lastRestocked": "2025-10-14 3:04 PM"
+  },
+  {
+    "id": "prod-018",
+    "name": "Mini Desk Organizer",
+    "sku": "SKU-88418",
+    "aisle": "Front End",
+    "bay": "Queue 3",
+    "stockStatus": "Low",
+    "lastRestocked": "2025-10-11 7:58 AM"
+  },
+  {
+    "id": "prod-019",
+    "name": "Crystal Glass Jar Set",
+    "sku": "SKU-51191",
+    "aisle": "Aisle 10",
+    "bay": "Bay 3",
+    "stockStatus": "In Stock",
+    "lastRestocked": "2025-10-15 6:05 AM"
+  },
+  {
+    "id": "prod-020",
+    "name": "Garden Seed Starter Kit",
+    "sku": "SKU-51197",
+    "aisle": "Aisle 10",
+    "bay": "Bay 9",
+    "stockStatus": "Out",
+    "lastRestocked": "2025-10-07 4:12 PM"
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "task-101",
+    "title": "Restock paper towels",
+    "location": "Aisle 7 Bay 3",
+    "notes": "Need 4 cases on hand before lunch rush.",
+    "priority": "must-do",
+    "status": "pending",
+    "relatedSku": "SKU-04821",
+    "carriedOver": false
+  },
+  {
+    "id": "task-102",
+    "title": "Update planogram — Seasonal End Cap 2",
+    "location": "End Cap 2",
+    "notes": null,
+    "priority": "must-do",
+    "status": "in-progress",
+    "relatedSku": null,
+    "carriedOver": true
+  },
+  {
+    "id": "task-103",
+    "title": "Recover softlines",
+    "location": "Section 12",
+    "notes": "Fold and rehang denim display.",
+    "priority": "as-time-allows",
+    "status": "pending",
+    "relatedSku": null,
+    "carriedOver": false
+  },
+  {
+    "id": "task-104",
+    "title": "Price check",
+    "location": "Aisle 3 Bay 1",
+    "notes": "Verify shelf tag matches promo signage.",
+    "priority": "as-time-allows",
+    "status": "done",
+    "relatedSku": "SKU-00234",
+    "carriedOver": false
+  },
+  {
+    "id": "task-105",
+    "title": "Check fitting room cart",
+    "location": "Front of Store",
+    "notes": "Reset carts and restock hangers.",
+    "priority": "must-do",
+    "status": "pending",
+    "relatedSku": null,
+    "carriedOver": false
+  },
+  {
+    "id": "task-106",
+    "title": "Replenish dog food",
+    "location": "Aisle 5 Bay 2",
+    "notes": "Pallet arrived in the backroom.",
+    "priority": "must-do",
+    "status": "done",
+    "relatedSku": "SKU-19384",
+    "carriedOver": true
+  },
+  {
+    "id": "task-107",
+    "title": "Straighten impulse display",
+    "location": "Checkout Lane 2",
+    "notes": "Collect scattered items and reset sign holders.",
+    "priority": "as-time-allows",
+    "status": "in-progress",
+    "relatedSku": null,
+    "carriedOver": false
+  },
+  {
+    "id": "task-108",
+    "title": "Inspect checkout queue signage",
+    "location": "Front End",
+    "notes": "One sign missing from queue 3.",
+    "priority": "must-do",
+    "status": "pending",
+    "relatedSku": "SKU-88418",
+    "carriedOver": false
+  }
+]
