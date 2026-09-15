@@ -550,7 +550,6 @@ textarea {
 
 .task-card.complete,
 .complete-item {
-  text-decoration: line-through;
   opacity: 0.78;
 }
 
