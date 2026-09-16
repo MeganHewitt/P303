@@ -167,7 +167,7 @@ onMounted(() => {
 
 <template>
   <div class="app-shell">
-    <header class="top-bar" v-if="currentView !== 'report'">
+    <header class="top-bar">
       <div class="store-meta">
         <div class="store-name">Store #0447</div>
         <div class="associate-name">Jordan M.</div>
@@ -327,10 +327,6 @@ onMounted(() => {
     </main>
 
     <main class="screen" v-else-if="currentView === 'report'">
-      <div class="report-header">
-        <h2>Report Issue</h2>
-      </div>
-
       <form class="issue-form" @submit.prevent="submitIssue">
         <label>
           <span>Issue Type</span>
