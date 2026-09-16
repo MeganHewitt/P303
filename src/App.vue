@@ -593,7 +593,7 @@ textarea {
 .task-title-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 8px;
 }
 
@@ -624,12 +624,20 @@ textarea {
 }
 
 .carried-over {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  align-self: center;
   font-size: 10px;
+  line-height: 1;
   color: #0f172a;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
   padding: 4px 6px;
   border-radius: 999px;
+  min-height: 20px;
+  text-align: center;
 }
 
 .task-details {
