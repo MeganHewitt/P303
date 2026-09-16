@@ -70,12 +70,14 @@ const uncompletedTasks = computed(() => tasks.value.filter((task) => task.status
 
 const filteredProducts = computed(() => {
   const query = searchQuery.value.trim().toLowerCase()
-  if (!query) return products.value
+  if (!query) return [...products.value].sort((a, b) => a.sku.localeCompare(b.sku))
 
-  return products.value.filter(
-    (product) =>
-      product.name.toLowerCase().includes(query) || product.sku.toLowerCase().includes(query),
-  )
+  return [...products.value]
+    .filter(
+      (product) =>
+        product.name.toLowerCase().includes(query) || product.sku.toLowerCase().includes(query),
+    )
+    .sort((a, b) => a.sku.localeCompare(b.sku))
 })
 
 const navItems = [
@@ -188,20 +190,19 @@ onMounted(() => {
             @click="toggleTask(task.id)"
           >
             <div class="task-main-row">
-              <div class="task-status-dot" :style="{ background: statusColor(task.status) }"></div>
               <div class="task-copy">
                 <div class="task-title-row">
-                  <h3>{{ task.title }}</h3>
+                  <div class="task-status-inline">
+                    <span class="task-status-dot" :style="{ background: statusColor(task.status) }"></span>
+                    <span class="status-badge" :style="{ color: statusColor(task.status) }">
+                      {{ task.status === 'pending' ? 'Pending' : task.status === 'in-progress' ? 'In Progress' : 'Done' }}
+                    </span>
+                  </div>
                   <span v-if="task.carriedOver" class="carried-over">Carried over</span>
                 </div>
+                <h3>{{ task.title }}</h3>
                 <p>{{ task.location }}</p>
               </div>
-            </div>
-
-            <div class="task-badges">
-              <span class="status-badge" :style="{ color: statusColor(task.status) }">
-                {{ task.status === 'pending' ? 'Pending' : task.status === 'in-progress' ? 'In Progress' : 'Done' }}
-              </span>
             </div>
 
             <div v-if="expandedTaskIds.includes(task.id)" class="task-details">
@@ -237,20 +238,19 @@ onMounted(() => {
             @click="toggleTask(task.id)"
           >
             <div class="task-main-row">
-              <div class="task-status-dot" :style="{ background: statusColor(task.status) }"></div>
               <div class="task-copy">
                 <div class="task-title-row">
-                  <h3>{{ task.title }}</h3>
+                  <div class="task-status-inline">
+                    <span class="task-status-dot" :style="{ background: statusColor(task.status) }"></span>
+                    <span class="status-badge" :style="{ color: statusColor(task.status) }">
+                      {{ task.status === 'pending' ? 'Pending' : task.status === 'in-progress' ? 'In Progress' : 'Done' }}
+                    </span>
+                  </div>
                   <span v-if="task.carriedOver" class="carried-over">Carried over</span>
                 </div>
+                <h3>{{ task.title }}</h3>
                 <p>{{ task.location }}</p>
               </div>
-            </div>
-
-            <div class="task-badges">
-              <span class="status-badge" :style="{ color: statusColor(task.status) }">
-                {{ task.status === 'pending' ? 'Pending' : task.status === 'in-progress' ? 'In Progress' : 'Done' }}
-              </span>
             </div>
 
             <div v-if="expandedTaskIds.includes(task.id)" class="task-details">
@@ -314,8 +314,8 @@ onMounted(() => {
           class="product-item"
           @click="openProductSheet(product)"
         >
-          <div class="product-name">{{ product.name }}</div>
           <div class="product-sku">{{ product.sku }}</div>
+          <div class="product-name">{{ product.name }}</div>
           <div class="product-row">
             <span>{{ product.aisle }} • {{ product.bay }}</span>
             <span class="status-badge" :style="{ color: statusColor(product.stockStatus) }">
@@ -582,8 +582,14 @@ textarea {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  margin-top: 6px;
   flex-shrink: 0;
+  display: inline-block;
+}
+
+.task-status-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .task-copy {
@@ -595,6 +601,7 @@ textarea {
   justify-content: space-between;
   align-items: center;
   gap: 8px;
+  margin-bottom: 8px;
 }
 
 .task-card h3 {
