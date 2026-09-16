@@ -37,6 +37,7 @@ const managerNotes = ref<ManagerNote[]>(managerNotesData as ManagerNote[])
 const currentView = ref<'tasks' | 'search' | 'report' | 'notes'>('tasks')
 const searchQuery = ref('')
 const selectedProduct = ref<Product | null>(null)
+const flaggedSkus = ref<string[]>([])
 const showBottomSheet = ref(false)
 const issueForm = ref({
   type: '',
@@ -131,6 +132,13 @@ function closeProductSheet() {
 }
 
 function flagForRestock() {
+  if (!selectedProduct.value) return
+
+  const sku = selectedProduct.value.sku
+  if (!flaggedSkus.value.includes(sku)) {
+    flaggedSkus.value = [...flaggedSkus.value, sku]
+  }
+
   showToastMessage('Flagged for restock')
   closeProductSheet()
 }
@@ -312,9 +320,13 @@ onMounted(() => {
           v-for="product in filteredProducts"
           :key="product.id"
           class="product-item"
+          :class="{ flagged: flaggedSkus.includes(product.sku) }"
           @click="openProductSheet(product)"
         >
-          <div class="product-sku">{{ product.sku }}</div>
+          <div class="product-sku-row">
+            <div class="product-sku">{{ product.sku }}</div>
+            <span v-if="flaggedSkus.includes(product.sku)" class="flag-pill">Flagged</span>
+          </div>
           <div class="product-name">{{ product.name }}</div>
           <div class="product-row">
             <span>{{ product.aisle }} • {{ product.bay }}</span>
@@ -413,8 +425,11 @@ onMounted(() => {
           <div><strong>Location:</strong> {{ selectedProduct.aisle }} • {{ selectedProduct.bay }}</div>
           <div><strong>Status:</strong> {{ selectedProduct.stockStatus }}</div>
           <div><strong>Last Restocked:</strong> {{ selectedProduct.lastRestocked }}</div>
+          <div v-if="flaggedSkus.includes(selectedProduct.sku)" class="flag-pill large">Flagged for restock</div>
         </div>
-        <button class="primary-submit" @click="flagForRestock">Flag for Restock</button>
+        <button class="primary-submit" @click="flagForRestock">
+          {{ flaggedSkus.includes(selectedProduct.sku) ? 'Already Flagged' : 'Flag for Restock' }}
+        </button>
       </div>
     </div>
 
@@ -759,6 +774,19 @@ textarea {
   cursor: pointer;
 }
 
+.product-item.flagged {
+  border-color: rgba(220, 38, 38, 0.35);
+  background: rgba(220, 38, 38, 0.02);
+}
+
+.product-sku-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
 .product-name {
   font-weight: 700;
   margin-bottom: 6px;
@@ -767,7 +795,27 @@ textarea {
 .product-sku {
   color: #64748b;
   font-size: 14px;
-  margin-bottom: 8px;
+}
+
+.flag-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(220, 38, 38, 0.08);
+  color: #b91c1c;
+  border: 1px solid rgba(220, 38, 38, 0.18);
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.flag-pill.large {
+  width: fit-content;
+  padding: 6px 10px;
+  font-size: 11px;
 }
 
 .product-row {
